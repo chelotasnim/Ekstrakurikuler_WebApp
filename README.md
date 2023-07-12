@@ -3,8 +3,8 @@
 - Sistem Informasi berbasis WEBSITE PERTAMA SAYA yang dibangun pada September 2022 dalam ajang kompetisi EPIM TI POLIJE 2022 -
 
 Akun Demo Admin :
-Username : demouser
-Password : 123456789
+- Username : demouser
+- Password : 123456789
 
 Login Admin dan User :
 - Navbar > Pendaftaran > Login
