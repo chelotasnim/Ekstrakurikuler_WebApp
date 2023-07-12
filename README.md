@@ -11,6 +11,8 @@ Login Admin dan User :
 Daftar User Baru
 - Navbar > Pendafataran > SignIn
 
+!!! TELAH DISERTAKAN DUMMY DATA BERUPA KONTEN YANG TIDAK BERSIFAT NYATA !!!
+
 Fitur Sistem :
 - Landing Page Ekstrakurikuler
 - Dashboard Admin
