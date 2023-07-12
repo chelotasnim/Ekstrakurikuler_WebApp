@@ -11,7 +11,7 @@
         $username = htmlspecialchars($_POST['username']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
         $password = password_hash($password, PASSWORD_DEFAULT);
-        $insert = mysqli_query($conn,"INSERT INTO user VALUES('','$username','$password','user')");
+        $insert = mysqli_query($conn,"INSERT INTO user VALUES(null,'$username','$password','user')");
     }
 
     if(isset($_POST['login'])) {
@@ -48,6 +48,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../bootstrap-4.6.2-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../icons/css/all.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../assets/eksis-icon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <title>Register Account</title>
 </head>

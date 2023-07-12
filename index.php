@@ -28,7 +28,7 @@ if($id === null){
         $subjek = htmlspecialchars($_POST['subjek']);
         $keterangan =htmlspecialchars($_POST['keterangan']);
 
-        $query = mysqli_query($conn,"INSERT INTO pesan VALUES('','$username','$subjek','$keterangan')");
+        $query = mysqli_query($conn,"INSERT INTO pesan VALUES(null,'$username','$subjek','$keterangan')");
     }
 ?>
 <!doctype html>
@@ -39,6 +39,7 @@ if($id === null){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="bootstrap-4.6.2-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="icons/css/all.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/eksis-icon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <title>Ekskul Smakensa</title>
   </head>

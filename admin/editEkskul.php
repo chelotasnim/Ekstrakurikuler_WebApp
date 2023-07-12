@@ -15,12 +15,12 @@
         $direktori = "foto/";
         $fileName = $_FILES['gambar']['name'];
         move_uploaded_file($_FILES['gambar']['tmp_name'],$direktori.$fileName);
-        $insert = mysqli_query($conn,"INSERT INTO extra VALUES('','$namaExtra','$deskripsi','$fileName','$kategori','$namaPembina')");
+        $insert = mysqli_query($conn,"INSERT INTO extra VALUES(null,'$namaExtra','$deskripsi','$fileName','$kategori','$namaPembina')");
 
     }
     if(isset($_POST['submitcategory'])){
         $newCategory = htmlspecialchars($_POST['newcategory']);
-        $insert = mysqli_query($conn,"INSERT INTO category VALUES('','$newCategory')");
+        $insert = mysqli_query($conn,"INSERT INTO category VALUES(null,'$newCategory')");
     }
     $showCategory = mysqli_query($conn,"SELECT * FROM category");
     $categoryDropdown = mysqli_query($conn,"SELECT DISTINCT category FROM category");

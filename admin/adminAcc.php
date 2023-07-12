@@ -5,7 +5,7 @@ if(isset($_POST['submit'])){
   $passswordAdmin = mysqli_real_escape_string($conn,$_POST['passwordAdmin']);
   $passswordAdmin=password_hash($passswordAdmin, PASSWORD_DEFAULT);
 
-  $insert = mysqli_query($conn,"INSERT INTO user VALUES('','$usernameAdmin','$passswordAdmin','admin')");
+  $insert = mysqli_query($conn,"INSERT INTO user VALUES(null,'$usernameAdmin','$passswordAdmin','admin')");
 }
 
 $showAdmin = mysqli_query($conn,"SELECT * FROM user WHERE role = 'admin'");

@@ -1,3 +1,2 @@
 <?php
-    $conn = mysqli_connect("localhost","root","","extra_event"); 
-?>
+    $conn = mysqli_connect("localhost","root","","extra_event");
