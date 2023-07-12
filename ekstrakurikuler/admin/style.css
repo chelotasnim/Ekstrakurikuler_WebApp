@@ -1,0 +1,766 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  user-select: none;
+}
+
+.dashboard {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background: rgb(245, 245, 255);
+}
+
+.side-bar {
+  position: relative;
+  width: 300px;
+  height: 100vh;
+  background: rgb(50, 70, 70);
+  transition: 1s;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.toggle-dashboard {
+  position: absolute;
+  display: none;
+  top: 16px;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  z-index: 1000;
+  cursor: pointer;
+  transition: 1s;
+  color: rgb(255, 255, 255);
+}
+
+.toggle-dashboard:hover {
+  transform: rotate(360deg);
+}
+
+.bar-box,
+.profile-bar {
+  position: relative;
+  padding: 16px 40px;
+  transition: 1s;
+  color: rgb(255, 255, 255);
+}
+
+.sub-bar {
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.sub-bar.active {
+  height: max-content;
+}
+
+.sub-box {
+  display: flex;
+  padding: 16px 64px;
+  background: rgb(40, 60, 60);
+  overflow: hidden;
+  gap: 8px;
+  color: rgb(255, 255, 255);
+}
+
+.sub-box:hover {
+  color: rgb(150, 150, 150);
+}
+
+.profile-bar {
+  padding: 32px;
+  background: rgb(40, 55, 55);
+}
+
+.profile-bar .profile-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.profile-bar h3 {
+  margin-top: 16px;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.profile-bar p {
+  display: inline-block;
+  color: rgb(200, 200, 200);
+}
+
+.light {
+  background: rgb(255, 255, 255);
+  box-shadow: 0 0 15px rgb(255, 255, 255);
+}
+
+.bar-box.active {
+  background: linear-gradient(to left, rgb(50, 70, 70), rgb(100, 120, 120));
+  color: rgb(255, 255, 255);
+}
+
+.bar-box {
+  display: flex;
+  transition: 1s;
+  gap: 8px;
+  color: rgb(150, 150, 150);
+}
+
+.bar-box a,
+.sub-box a {
+  cursor: pointer;
+}
+
+.bar-box a,
+.bar-box p,
+.sub-box a,
+.sub-box {
+  transition: 0.5s;
+  text-decoration: none;
+  font-size: 14px;
+  color: rgb(150, 150, 150);
+}
+
+.bar-box:hover,
+.bar-box:hover a,
+.bar-box:hover p,
+.bar-box.active a,
+.bar-box.active p,
+.sub-box a:hover {
+  color: rgb(250, 250, 250);
+}
+
+.sub-box a {
+  font-size: 12px;
+}
+
+.bottom-stick {
+  position: absolute;
+  bottom: 0;
+  width: 75%;
+  height: 3px;
+}
+
+.side-stick {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 8px;
+  transition: 0.5s;
+}
+
+.bar-box:hover .light,
+.bar-box.active .light {
+  height: 75%;
+  box-shadow: 0 0 15px rgb(255, 255, 255), 0 0 25px rgb(255, 255, 255),
+    0 0 50px rgb(255, 255, 255);
+}
+
+.admin-content::-webkit-scrollbar {
+  width: 3px;
+}
+
+.admin-content::-webkit-scrollbar-track {
+  background: rgb(200, 200, 200);
+}
+
+.admin-content::-webkit-scrollbar-thumb {
+  background: rgb(100, 125, 125);
+}
+
+.admin-content {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 16px;
+  max-height: 100vh;
+  overflow-y: scroll;
+}
+
+.admin-content.single-used {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-content.single-used .edit-ekskul {
+  width: 75%;
+}
+
+.admin-content .dashboard-header {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  padding: 0 32px;
+  gap: 16px;
+}
+
+.admin-content .head-container {
+  position: relative;
+  flex: 1;
+  min-width: 300px;
+  height: 125px;
+  margin-top: 32px;
+  background: rgb(255, 255, 255);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  color: rgb(255, 255, 255);
+}
+
+.dashboard-header.user-report {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin-top: 150px;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-report .head-container {
+  display: flex;
+  max-width: 300px;
+  word-wrap: break-word;
+  min-height: 200px;
+  padding: 32px;
+  align-items: flex-end;
+}
+
+.user-report .container-content {
+  max-height: 100px;
+}
+
+.user-report .container-desc {
+  width: 100%;
+  height: 50%;
+  font-size: 14px;
+  color: rgb(100, 100, 100);
+}
+
+.container-desc p {
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.container-content {
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  width: 85%;
+  height: 90%;
+  padding: 16px;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, rgb(100, 200, 200), rgb(100, 225, 150));
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.head-container:nth-child(even) .container-content {
+  background: linear-gradient(to right, rgb(40, 60, 60), rgb(100, 120, 120));
+}
+
+.container-content h3 {
+  text-transform: uppercase;
+  font-size: 19px;
+}
+
+.container-content p {
+  font-size: 16px;
+}
+
+.container-content .logo {
+  position: absolute;
+  bottom: -24px;
+  right: -24px;
+}
+
+.dashboard-statistic {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  gap: 16px;
+}
+
+.user-report a {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  color: rgb(255, 255, 255);
+}
+
+.member-statistic {
+  flex: 1;
+  min-width: 300px;
+}
+
+.member-statistic header {
+  padding: 16px 32px;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.member-statistic header h5 {
+  padding-left: 8px;
+  border-left: 3px solid rgb(100, 225, 150);
+  font-weight: 400;
+  font-size: 14px;
+  color: rgb(100, 100, 100);
+}
+
+.member-statistic-chart {
+  width: 100%;
+  padding: 24px 32px;
+  margin-top: 8px;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.canvas-container::-webkit-scrollbar {
+  height: 0;
+}
+
+.canvas-container {
+  width: 100%;
+  height: 100%;
+  overflow-x: scroll;
+}
+
+.canvas-container canvas {
+  min-width: 350px;
+  width: 100%;
+}
+
+.popular-ekskul {
+  display: none;
+}
+
+.user-log {
+  position: absolute;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 32px;
+  width: 90%;
+  height: 75%;
+  max-height: 90%;
+  flex-direction: column;
+  background: rgb(255, 255, 255);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.user-head h5 {
+  font-weight: 400;
+  font-size: 32px;
+  color: rgb(100, 100, 100);
+}
+
+.user-head h5 span {
+  line-height: 32px;
+  font-weight: 600;
+  font-size: 48px;
+}
+
+.user-container {
+  margin-top: 8px;
+  height: 100%;
+  overflow: scroll;
+}
+
+.user-container::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.user-container::-webkit-scrollbar-track {
+  background: rgb(200, 200, 200);
+}
+
+.user-container::-webkit-scrollbar-thumb {
+  background: rgb(100, 100, 100);
+}
+
+.user-container table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.user-container table th {
+  padding: 8px;
+  min-width: 125px;
+  background: linear-gradient(
+    to bottom,
+    rgb(100, 200, 200),
+    rgb(100, 225, 150)
+  );
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 12px;
+}
+
+.user-container table td {
+  padding: 8px;
+  border: 1px solid rgb(225, 225, 225);
+  text-align: center;
+  font-size: 12px;
+  color: rgb(100, 100, 100);
+}
+
+.user-container table th,
+.user-container table td {
+  text-align: left;
+}
+
+table th:nth-child(1),
+table th:last-child,
+table td:nth-child(1),
+table td:last-child {
+  text-align: center;
+  min-width: 24px;
+  max-width: 48px;
+}
+
+.edit-ekskul {
+  display: flex;
+  margin-top: 48px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.edit-ekskul header,
+.edit-ekskul-content {
+  width: 75%;
+  min-width: 300px;
+  padding: 16px 32px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1), 5px 5px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.edit-ekskul header {
+  display: flex;
+}
+
+.edit-ekskul-content {
+  padding: 32px 16px;
+}
+
+.edit-ekskul header h5 {
+  margin-left: 16px;
+  padding-left: 16px;
+  border-left: 3px solid rgb(100, 200, 200);
+  font-weight: 400;
+  font-size: 20px;
+  color: rgb(100, 100, 100);
+}
+
+.edit-ekskul form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 48px;
+}
+
+.edit-ekskul form.category-form {
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+form.category-form .search {
+  display: flex;
+  margin-top: 0;
+}
+
+form.category-form .search-box {
+  width: 100%;
+}
+
+form.category-form .submit {
+  padding: 8px 16px;
+  margin-left: 8px;
+  background: linear-gradient(to right bottom, rgb(100, 200, 200), rgb(100, 225, 150));
+  border: 1px solid rgb(100, 200, 200);
+  outline: none;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+form.category-form .submit:hover {
+  background: none;
+  color: rgb(100, 200, 200);
+}
+
+.edit-ekskul .prompt {
+  margin-top: 8px;
+  width: 40%;
+  min-width: 150px;
+}
+
+.edit-ekskul p {
+  margin-bottom: -16px;
+  font-size: 14px;
+  color: rgb(150, 150, 150);
+}
+
+.edit-ekskul .prompt input, .edit-ekskul select {
+  width: 100%;
+  padding: 8px 0;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  border-bottom: 1px solid rgb(100, 100, 100);
+  color: rgb(100, 100, 100);
+  z-index: 10;
+}
+
+.edit-ekskul select {
+  cursor: pointer;
+}
+
+.edit-ekskul input[type="file"] {
+  background: none;
+  border: 1px solid rgb(100, 200, 200);
+  cursor: pointer;
+  color: transparent;
+}
+
+.edit-ekskul input[type="file"]:hover {
+  background: linear-gradient(to right, rgb(100, 200, 200), rgb(100, 225, 150));
+}
+
+.edit-ekskul input[type="file"]:hover::-webkit-file-upload-button {
+  color: rgb(255, 255, 255);
+}
+
+.edit-ekskul input[type="file"]::-webkit-file-upload-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgb(100, 200, 200);
+}
+
+.edit-ekskul input:focus {
+  outline: none;
+}
+
+.prompt button {
+  width: 100%;
+  padding: 8px 16px;
+  margin-top: 5px;
+  background: linear-gradient(to right, rgb(100, 200, 200), rgb(100, 225, 150));
+  border: 1px solid rgb(100, 200, 200);
+  cursor: pointer;
+  text-align: left;
+  font-size: 12px;
+  color: rgb(255, 255, 255);
+}
+
+.prompt button:hover {
+  background: none;
+  color: rgb(100, 200, 200);
+}
+
+.trash-logo {
+  width: 16px;
+  height: 16px;
+  color: rgb(255, 0, 0);
+}
+
+.edit-logo {
+  width: 16px;
+  height: 16px;
+  color: rgb(0, 100, 255);
+}
+
+.search {
+  display: flex;
+  margin-top: 32px;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-box {
+  width: 50%;
+  padding: 8px;
+  border: 1px solid rgb(200, 200, 200);
+  outline: none;
+  background: none;
+}
+
+.search a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-size: 12px;
+  color: rgb(100, 100, 100);
+}
+
+.admin-acc-components {
+  display: flex;
+  width: 100%;
+  margin-top: 64px;
+  min-height: 100vh;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 64px 32px;
+}
+
+.admin-acc-card {
+  position: relative;
+  padding: 84px 32px;
+  padding-bottom: 16px;
+  min-height: 300px;
+  transform: scale(.8);
+  background: rgb(255, 255, 255);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.regist-admin {
+  transform: scale(1);
+}
+
+.acc-logo {
+  position: absolute;
+  display: flex;
+  top: -50%;
+  left: 50%;
+  width: 75%;
+  height: 50%;
+  transform: translate(-50%, 50%);
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right bottom, rgb(100, 200, 200), rgb(100, 225, 150));
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.prompt {
+  margin-top: 16px;
+  font-size: 14px;
+  color: rgb(100, 100, 100);
+}
+
+.prompt input {
+  padding: 5px 8px;
+  margin-top: 5px;
+  background: rgb(240, 245, 245);
+  border: none;
+  outline: none;
+  font-size: 12px;
+}
+
+.acc-form a, .acc-form button {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 8px 16px;
+  border: none;
+  background: linear-gradient(to right bottom, rgb(100, 200, 200), rgb(100, 225, 150));
+  border: 1px solid rgb(100, 200, 200);
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.acc-form a:hover {
+  background: none;
+  color: rgb(100, 200, 200);
+}
+
+.admin-acc-card:nth-child(2) a {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .edit-ekskul .prompt {
+    width: 100%;
+  }
+  .edit-ekskul form.category-form {
+    padding: 0;
+  }
+  .edit-ekskul form {
+    padding: 0 32px;
+  }
+}
+
+@media (max-width: 800px) {
+  .member-statistic {
+    min-width: 300px;
+  }
+  .admin-acc-components {
+    margin-top: 100px;
+  }
+}
+
+@media (max-width: 700px) {
+  .toggle-dashboard {
+    display: inline-block;
+  }
+
+  .side-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .admin-content {
+    width: 100%;
+  }
+
+  .side-bar.hide {
+    top: 16px;
+    left: 16px;
+    height: 51px;
+    width: 51px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .side-bar.hide .profile-bar,
+  .side-bar.hide .bar-box {
+    opacity: 0;
+  }
+
+  .admin-content .dashboard-header {
+    padding: 0 16px;
+    padding-top: 84px;
+  }
+
+  .dashboard-statistic {
+    margin-top: 16px;
+  }
+
+  .canvas-container canvas {
+    min-width: 250px;
+    width: 100%;
+    height: 250px;
+  }  
+
+  table th:nth-child(1),
+  table th:last-child,
+  table td:nth-child(1),
+  table td:last-child  {
+    max-width: 125px;
+  }
+}

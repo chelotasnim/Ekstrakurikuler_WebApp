@@ -1,0 +1,324 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(200, 200, 200);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(100, 100, 100);
+}
+
+.page {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+
+.row {
+    position: relative;
+    display: flex;
+    flex: 1;
+    min-width: 400px;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgb(245, 245, 255);
+    overflow: hidden;
+}
+
+#pick::before {
+    position: absolute;
+    content: '';
+    top: -100%;
+    left: -200%;
+    width: 200%;
+    height: 150%;
+    transform: translate(50%, 50%);
+    background: rgb(100, 110, 120);
+    border-radius: 50%;
+}
+
+.scroll {
+    position: absolute;
+    display: none;
+    text-align: center;
+}
+
+.scroll.down {
+    bottom: 32px;
+    animation: hitMeBottom 1s ease-in-out infinite;
+}
+
+.scroll.top {
+    top: 16px;
+    animation: hitMeTop 1s ease-in-out infinite;
+    color: rgb(255, 255, 255);
+}
+
+.scroll.top a {
+    color: rgb(255, 255, 255);
+}
+
+@keyframes hitMeBottom {
+    0%, 100% {
+        bottom: 32px;
+    }
+    50% {
+        bottom: 48px;
+    }
+}
+
+@keyframes hitMeTop {
+    0%, 100% {
+        top: 16px;
+    }
+    50% {
+        top: 48px;
+    }
+}
+
+.scroll a {
+    display: block;
+    margin-bottom: -3px;
+    text-decoration: none;
+    color: rgb(100, 100, 100);
+}
+
+.row.form-content {
+    flex: 2;
+    background: rgb(245, 245, 255);
+    color: rgb(100, 100, 100);
+}
+
+.box.select-box, .box.box-head {
+    position: relative;
+    display: flex;
+    width: 150px;
+    height: 30px;
+    padding-left: 16px;
+    align-items: center;
+    background: rgb(60, 70, 70);
+    transform: skewY(-15deg) translateX(0);
+    transition: 1s;
+    cursor: pointer;
+    z-index: var(--i);
+    font-size: 12px;
+    color: rgb(200, 200, 200);
+}
+
+.box.box-head {
+    background: rgb(100, 200, 200);
+    cursor: context-menu;
+    color: rgb(255, 255, 255);
+}
+
+.box.box-head::before {
+    background: rgb(50, 150, 150);
+}
+
+.box.box-head::after {
+    background: rgb(70, 170, 170);
+}
+
+.box.box-head.limit {
+    background: rgb(255, 0, 50);
+}
+
+.box.box-head.limit::before {
+    background: rgb(200, 0, 20);
+}
+
+.box.box-head.limit::after {
+    background: rgb(225, 0, 25);
+}
+
+.box.box-head.good {
+    background: rgb(0, 255, 25);
+}
+
+.box.box-head.good::before {
+    background: rgb(0, 200, 10);
+}
+
+.box.box-head.good::after {
+    background: rgb(0, 225, 15);    
+}
+
+.box.select-box:hover, .box.select-box.active {
+    transform: skewY(-15deg) translateX(32px);
+}
+
+.box.box-head:hover {
+    transform: skewY(-15deg) translateX(0);
+}
+
+.box::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: -40px;
+    width: 40px;
+    height: 100%;
+    transform-origin: right;
+    transform: skewY(45deg);
+    background: rgb(40, 50, 50);
+    transition: 1s;
+}
+
+.box::after {
+    position: absolute;
+    content: '';
+    top: -40px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    transform-origin: bottom;
+    transform: skewX(45deg);
+    background: rgb(50, 60, 60);
+    transition: 1s;
+}
+
+.form-content h5 {
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.prompt-container {
+    margin-top: 32px;
+}
+
+.prompt {
+    margin-top: 16px;
+}
+
+.prompt p {
+    font-size: 14px;
+}
+
+.prompt input {
+    width: 100%;
+    padding: 8px;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid rgb(100, 100, 100);
+    outline: none;
+}
+
+.prompt input.phone-number::-webkit-inner-spin-button {
+    appearance: none;
+}
+
+.prompt .ekskul-input {
+    cursor: not-allowed;
+    color: rgb(100, 100, 100);
+}
+
+.prompt input[type="file"] {
+    margin-top: 8px;
+    background: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    color: transparent;
+  }
+  
+.prompt input[type="file"]:hover {
+    box-shadow:
+    inset 3px 3px 3px rgba(0, 0, 0, .07),
+    inset -1px -1px 1px rgba(0, 0, 0, .07);
+}
+  
+.prompt input[type="file"]:hover::-webkit-file-upload-button {
+    color: rgb(200, 200, 200);
+}
+  
+.prompt input[type="file"]::-webkit-file-upload-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgb(100, 100, 100);
+}
+
+button {
+    margin-top: 32px;
+    margin-right: 8px;
+    padding: 8px 16px;
+    border: none;
+    background: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    box-shadow:
+    inset 5px 5px 5px rgba(0, 0, 0, .05),
+    inset -1px -1px 1px rgba(0, 0, 0, .05);
+}
+
+button a {
+    text-decoration: none;
+}
+
+button a, button {
+    color: rgb(100, 100, 100);
+}
+
+button:hover a, button:hover {
+    color: rgb(200, 200, 200);
+}
+
+button:focus {
+    outline: none;
+}
+
+@media (max-width: 800px) {
+    .scroll {
+        display: inline-block;
+    }
+
+    .row {
+        order: 2;
+    }
+
+    #pick::before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: -75%;
+        width: 250%;
+        height: 150%;
+        transform: translate(0);   
+        background: rgb(100, 110, 120);
+        border-radius: 50%;
+    }
+
+    .row.form-content {
+        order: 1;
+        padding-top: 48px;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 500px) {
+    .row {
+        min-width: 300px;
+    }
+}
